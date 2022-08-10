@@ -2,6 +2,8 @@
 
 FROM golang:1.19.0-alpine3.16 as builder
 
+RUN apk add --no-cache --virtual git
+
 RUN mkdir -p /go/src/github.com/syoder89
 
 WORKDIR /go/src/github.com/syoder89
