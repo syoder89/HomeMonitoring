@@ -2,7 +2,7 @@
 
 FROM golang:1.19.0-alpine3.16 as builder
 
-RUN apk add --no-cache --virtual git
+RUN apk add --no-cache git
 
 RUN mkdir -p /go/src/github.com/syoder89
 
