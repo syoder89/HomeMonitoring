@@ -2,14 +2,13 @@
 
 FROM golang:1.19.0-alpine3.16 as builder
 
-WORKDIR /app
+RUN mkdir -p /go/src/github.com/syoder89
 
-COPY go.mod ./
-COPY go.sum ./
-RUN go mod download
+WORKDIR /go/src/github.com/syoder89
 
-COPY *.go ./
-COPY vmclient ./
+RUN git clone https://github.com/syoder89/tasmota-monitor
+
+WORKDIR /go/src/github.com/syoder89/tasmota-monitor
 
 RUN go build -o /tasmota-monitor
 
