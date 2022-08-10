@@ -24,7 +24,7 @@ type TasmotaMsg struct {
 }
 
 var tmsg TasmotaMsg
-var sensor
+var sensor string
 // tcp://mosquitto
 var broker = "tcp://mosquitto:1883"
 // http://172.20.1.4:8428/api/v1/import/prometheus
@@ -40,8 +40,7 @@ var messagePubHandler mqtt.MessageHandler = func(client mqtt.Client, msg mqtt.Me
 func main() {
 	if val, ok := os.LookupEnv("SENSOR"); ok {
 		sensor = val
-	}
-	else {
+	} else {
 		panic("No sensor name provided!")
 	}
 
