@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: tasmota-monitor
+  name: tasmota-monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tasmota-monitor
+  template:
+    metadata:
+      labels:
+        app: tasmota-monitor
+    spec:
+      containers:
+      - env:
+        - name: SENSOR
+          value: taylor_water_uv
+        image: syoder89/tasmota-monitor
+        name: tasmota-monitor
